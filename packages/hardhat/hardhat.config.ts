@@ -31,7 +31,7 @@ const config: HardhatUserConfig = {
       },
     },
   },
-  defaultNetwork: "localhost",
+  defaultNetwork: "liskSepolia",
   namedAccounts: {
     deployer: {
       // By default, it will take the first Hardhat account as the deployer
@@ -130,6 +130,7 @@ const config: HardhatUserConfig = {
     liskSepolia: {
       url: "https://rpc.sepolia-api.lisk.com",
       accounts: [deployerPrivateKey],
+      chainId: 4202,
     },
     mode: {
       url: "https://mainnet.mode.network",
@@ -143,6 +144,16 @@ const config: HardhatUserConfig = {
   // configuration for harhdat-verify plugin
   etherscan: {
     apiKey: `${etherscanApiKey}`,
+    customChains: [
+      {
+        network: "liskSepolia",
+        chainId: 4202,
+        urls: {
+          apiURL: "https://sepolia-blockscout.lisk.com/api",
+          browserURL: "https://sepolia-blockscout.lisk.com",
+        },
+      },
+    ],
   },
   // configuration for etherscan-verify from hardhat-deploy plugin
   verify: {
