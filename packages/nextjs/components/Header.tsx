@@ -11,6 +11,7 @@ import {
   CurrencyDollarIcon,
   HomeIcon,
   ServerStackIcon,
+  ShoppingCartIcon,
   SparklesIcon,
 } from "@heroicons/react/24/outline";
 import {
@@ -48,6 +49,11 @@ export const menuLinks: HeaderMenuLink[] = [
     label: "Gasless",
     href: "/gasless",
     icon: <SparklesIcon className="h-4 w-4" />,
+  },
+  {
+    label: "Marketplace", // Add this entire object
+    href: "/marketplace",
+    icon: <ShoppingCartIcon className="h-4 w-4" />,
   },
   {
     label: "Debug Contracts",
