@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { parseEther } from "viem";
+import { Hex, parseEther } from "viem";
 import { useAccount } from "wagmi";
 import { useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
@@ -14,7 +14,7 @@ export const TokenTransfer = () => {
   const { writeAsync: writeMyTokenAsync } = useScaffoldContractWrite({
     contractName: "MyToken",
     functionName: "transfer",
-    args: [recipient, parseEther(amount)],
+    args: [recipient as Hex, parseEther(amount)],
   });
 
   const handleTransfer = async () => {
@@ -25,7 +25,7 @@ export const TokenTransfer = () => {
 
     try {
       await writeMyTokenAsync({
-        args: [recipient, parseEther(amount)],
+        args: [recipient as Hex, parseEther(amount)],
       });
 
       notification.success("Token transfer successful!");

@@ -25,3 +25,15 @@ export const liskSepolia = /*#__PURE__*/ defineChain({
   },
   testnet: true,
 });
+
+export const liskSepoliaThirdweb = {
+  id: 4202,
+  chainName: "Lisk Sepolia Testnet",
+  nativeCurrency: {
+    name: "Sepolia Ether",
+    symbol: "ETH",
+    decimals: 18,
+  },
+  rpc: "https://rpc.sepolia-api.lisk.com",
+  blockExplorerUrls: ["https://sepolia-blockscout.lisk.com"],
+};

@@ -1,5 +1,6 @@
 "use client";
 
+import { Hex } from "viem";
 import { useAccount } from "wagmi";
 import { Address } from "~~/components/scaffold-eth";
 import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
@@ -10,7 +11,7 @@ export const TokenBalance = () => {
   const { data: tokenBalance } = useScaffoldContractRead({
     contractName: "MyToken",
     functionName: "balanceOf",
-    args: [connectedAddress],
+    args: [connectedAddress as Hex | undefined],
   });
 
   const { data: tokenSymbol } = useScaffoldContractRead({

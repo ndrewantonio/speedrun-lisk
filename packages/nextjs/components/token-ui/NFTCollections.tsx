@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Hex } from "viem";
 import { useAccount } from "wagmi";
 import { Address } from "~~/components/scaffold-eth";
 import { useScaffoldContractRead, useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
@@ -28,13 +29,13 @@ export const NFTCollection = () => {
   const { data: userBalance } = useScaffoldContractRead({
     contractName: "MyNFT",
     functionName: "balanceOf",
-    args: [connectedAddress],
+    args: [connectedAddress as Hex | undefined],
   });
 
   const { writeAsync: writeMyNFTAsync } = useScaffoldContractWrite({
     contractName: "MyNFT",
     functionName: "mint",
-    args: [mintToAddress || connectedAddress],
+    args: [(mintToAddress as Hex | undefined) || (connectedAddress as Hex | undefined)],
   });
 
   const handleMint = async () => {
@@ -47,7 +48,7 @@ export const NFTCollection = () => {
 
     try {
       await writeMyNFTAsync({
-        args: [targetAddress],
+        args: [targetAddress as Hex],
       });
 
       notification.success("NFT minted successfully!");
